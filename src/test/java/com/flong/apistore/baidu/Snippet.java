@@ -22,22 +22,11 @@ public class Snippet {
 	
 	
 	private static String ENCODING_UTF_8="utf-8";
-	static String name="女网友忘关摄像头";
+	static String name="ttt";
 	
-
-	//private static String pathUrl = "http://mmnews.net.cn/h5/lf/lifegame.htm?from=timeline&isappinstalled=0";
-	//private static String pathUrl = "http://mmnews.net.cn/fruit/com/1/csg/index.htm?from=groupmessage&isappinstalled=0";
-	//private static String pathUrl = "http://wpower.com.cn/?uc=532731&from=singlemessage&isappinstalled=0";
-	//private static String pathUrl = "http://www.smhaocai.cn/fenxiangdaandaxue/"+getUrl(name)+".php";
-	//private static String pathUrl = "http://s22.cnzz.com/stat.php?id=5871071&web_id=5871071";
-	//private static String pathUrl = "http://mmnews.net.cn/moon/qq.com/payact/fi000001.1.htm";
+ 
 	
-	//private static String pathUrl = "http://tejia.gzxmt.cn/";
-	//private static String pathUrl = "http://wx.weisft.com/youxi/tcbgy/bgy_sibi/index.aspx";
-	//private static String pathUrl = "http://wx.weisft.com/dzzz/biguiyuan/wwfh/index.html";
-	//private static String pathUrl = "http://wx.weisft.com/youxi/tcbgy/bgy_sibi/index.aspx?from=singlemessage&isappinstalled=0";
-	
-	private static String pathUrl = "http://mp.weixin.qq.com/s?__biz=MzAxNTI0ODE2MA==&mid=404260869&idx=1&sn=88b5d5ecf09d805b75f88736b5445c49&3rd=MzA3MDU4NTYzMw==&scene=6#rd";
+	private static String pathUrl = "";
 	
 	public static void main(String[] args)throws Exception {
 		httpUrlConnection();
