@@ -1,0 +1,169 @@
+
+一、前言与作用
+
+  A)前言 
+     
+	1)由于最近工作一直用Oracle,故对Oracle数据库研究为对象。
+    
+	2)根据工作业务需求实际情况进行功能研发。在数据库升级或者迁移的时候，数据库SQL脚本非常作用。
+	  比如：数据库主脚本，副脚本，增量脚本。
+	
+	 
+    3)什么是主脚本、副脚本、增量脚本呢？
+	  3.1 主脚本指数据库表或存储过程，视图脚本,序列等脚本。
+	  3.2 副脚本指必须执行主脚本之后才执行的脚本。换句话说在没执行主键脚本的情况下，副脚本执行之后会回滚事务失败。
+	  3.3 增量脚本指在执行主脚本或副脚本之后，根据需求对某个表添加/修改约束(主外键约束，长度约束等)，添加/修改字
+	      段/添加数据等情况对数据库结构改变处理的一种行为脚本。
+
+  B)作用
+  
+    1) 快速产出自定义规则需要的SQL脚本。
+	
+	2) 减少人工编写SQL脚本出错率问题，完全通过程序检测SQL准确性。
+	
+	3) 提高开发人员SQL编写效率，减少人工编写SQL开发成本问题。
+    
+
+二、实现方式与原理
+   A) 实现方式分：正向与逆向实现。什么是正向与逆行呢(是否有鸡还是有蛋，先后道理同等)？
+	 
+	 1)正向方式：首先把设计好数据库表文档，把所有表的字段属性配置到EXCEL或者CSV格式的
+	    文件通过JXL/POI技术去读取文件的字段,再通过其他技术一系列程序处理之后生成所需要的SQL脚本
+	 
+	 2)逆向方式：首先有数据库表，然后通过ORM持久化技术连接数据库再读取表的字段等属性出来，
+	    再通过其他技术一系列程序处理之后生成所需要的SQL脚本
+
+   B) 原理
+   
+     对数据库软件内置核心表或视图查询出来存储用户行为表结构所有属性信息，对此属性结构信息进行分析与组装所需要SQL脚本。
+	
+	
+   
+三、知识体系与图解
+
+   放截图
+  
+   放思维导图图
+   
+   
+
+四、开发环境与工具
+
+    备注：工具可以根据自己情况与习惯进行选择.
+
+	1) nexus 中央仓库搭建
+		Nexus是Google公司的品牌，Nexus系列产品是Google公司研发的以原生Android为操作系统的智能手机、平板电脑等电子数码产品。
+	同时，Nexus手机和平板电脑是Google为华为、三星、LG、HTC、MOTO、ASUS等合作厂商提供的Android官方设计标准。
+
+	官方网：http://www.sonatype.org/nexus/
+	学习博客：http://blog.csdn.net/wang379275614/article/details/43940259
+		
+	2) Eclipse官方
+	  Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。
+	幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具（Java Development Kit,JDK）。
+	官方网：http://www.eclipse.org/downloads/
+		
+	3) Tomcat官方
+		Tomcat是Apache 软件基金会（Apache Software Foundation）的Jakarta 项目中的一个核心项目，由Apache、Sun 
+	和其他一些公司及个人共同开发而成。由于有了Sun 的参与和支持，最新的Servlet 和JSP 规范总是能在Tomcat 中得到体现，
+	Tomcat 5支持最新的Servlet2.4和JSP2.0规范。因为Tomcat 技术先进、性能稳定，而且免费，因而深受Java 爱好者的
+	喜爱并得到了部分软件开发商的认可，成为目前比较流行的Web 应用服务器。
+		Tomcat服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合
+	下被普遍使用，是开发和调试JSP 程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache 服务器，可利
+	用它响应HTML（标准通用标记语言下的一个应用）页面的访问请求。实际上Tomcat部分是Apache服务器的扩展，但它是独立运行的，
+	所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。诀窍是，当配置正确时，Apache 为HTML页面服务，而
+	Tomcat 实际上运行JSP页面和Servlet。另外，Tomcat和IIS等Web服务器一样，具有处理HTML页面的功能，另外它还是一个Servlet和
+	JSP容器，独立的Servlet容器是Tomcat的默认模式。不过，Tomcat处理静态HTML的能力不如Apache服务器。目前Tomcat最新版本为9.0
+	
+	官方网：http://tomcat.apache.org/
+	
+	
+	4) JDK官方
+	  JDK是 Java 语言的软件开发工具包，主要用于移动设备、嵌入式设备上的java应用程序。JDK是整个java开发的核心，
+	  它包含了JAVA的运行环境，JAVA工具和JAVA基础的类库
+	  
+	  官方网：http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	  
+	5)Maven官方与搭建
+	  Apache Maven是一个软件项目管理和理解工具。 基于项目对象模型（POM）的概念，Maven可以从中央信息管理项目的构建，报告和文档。
+	  
+	  官方网：http://maven.apache.org/
+	  学习博客：
+		https://yq.aliyun.com/articles/28591 
+		http://www.yiibai.com/maven/maven_project_documents.html#
+		
+	6)ER(ermaster)
+	  ERMaster是一个用于设计ER模型图的Eclipse插件。提供的功能包括：从数据库导入关系生成ER图，导出设计图，导出DDL数据定义语句等
+	  详细教程请看,官方网：http://ermaster.sourceforge.net/
+	  
+	
+五、使用技术体系	
+
+	A)前端UI
+       1)BootStrap
+	      Bootstrap，来自 Twitter，是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷。
+	   它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。Bootstrap提供了优雅的HTML和CSS规范，它即是由动态CSS
+	   语言Less写成。Bootstrap一经推出后颇受欢迎，一直是GitHub上的热门开源项目，包括NASA的MSNBC（微软全国广播公司）的Breaking News都使用了
+	   该项目。国内一些移动开发者较为熟悉的框架,如WeX5前端开源框架等，也是基于Bootstrap源码进行性能优化而来。
+	   
+	     官方网: http://www.bootcss.com/
+       2)jQuery
+			jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。
+	   jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。
+	   它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
+	   jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的css选择器，并且可对CSS选择器进行扩展；
+	   拥有便捷的插件扩展机制和丰富的插件。jQuery兼容各种主流浏览器，如IE 6.0+、FF 1.5+、Safari 2.0+、Opera 9.0+等
+	   官方网: http://jquery.com/
+		 
+		 
+       3)layerUI弹窗技术
+	    layer是一款web弹层组件，致力于服务各个水平段的开发人员。
+		官方网: http://layer.layui.com/
+	
+	B)框架
+	
+		1)Servlet3
+		  推荐学习博客
+		  http://jinnianshilongnian.iteye.com/category/255452
+		
+		2) SpringMVC
+			http://jinnianshilongnian.iteye.com/category/277825
+			http://jinnianshilongnian.iteye.com/category/231099
+			
+			
+		3) ORM
+			对象关系映射（英语：(Object Relational Mapping，简称ORM，或O/RM，或O/R mapping），是一种程序技术，用于实现面向对象
+			编程语言里不同类型系统的数据之间的转换。从效果上说，它其实是创建了一个可在编程语言里使用的“虚拟对象数据库”。
+		面向对象是从软件工程基本原则（如耦合、聚合、封装）的基础上发展起来的，而关系数据库则是从数学理论发展而来的，两套理论存在
+		显著的区别。为了解决这个不匹配的现象，对象关系映射技术应运而生。
+		对象关系映射（Object-Relational Mapping）提供了概念性的、易于理解的模型化数据的方法。ORM方法论基于三个核心原则： 
+		简单：以最基本的形式建模数据。传达性：数据库结构被任何人都能理解的语言文档化。精确性：基于数据模型创建正确标准化的结构。 
+		典型地，建模者通过收集来自那些熟悉应用程序但不熟练的数据建模者的人的信息开发信息模型。建模者必须能够用非技术企业专家可以
+		理解的术语在概念层次上与数据结构进行通讯。建模者也必须能以简单的单元分析信息，对样本数据进行处理。ORM专门被设计为改进这种联系。
+		比如：（JDBC，JdbcTemplate，Hibernate,Ibatis/MyBatis）
+		 
+		本项目框架在一年前工作中用到JdbcTemplate在资料的时候看到大牛的一篇文章，故下决心整理一个SpringMVC工程作为技术积累
+		JdbcTemplate推荐学习:https://www.oschina.net/code/snippet_1245103_33821
+		
+		
+       4) POI与JXL
+		4.1) POI官方网: http://poi.apache.org/
+		4.2) JXL官方网: http://jxl.sourceforge.net/
+        4.3) 入门例子：
+			https://github.com/jilongliang/excel-doc-pdf
+			https://github.com/jilongliang/JL_OutExcel
+		 
+		
+	   
+	   
+	   
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Hello SyntaxHighlighter</title>
+	<script type="text/javascript" src="scripts/shCore.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJava.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="scripts/shBrushSql.js"></script>
+	<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+ 
+  
+   <script type="text/javascript">  
+    <!--  
+    //高亮的配置不凡  
+    -->  
+    SyntaxHighlighter.defaults['auto-links'] = false; //是否可以添加自动连接  默认连接可以点击 默认为true  
+    SyntaxHighlighter.defaults['collapse'] = false; //默认高亮代码是否折叠 true为折叠 false为不折叠  
+    SyntaxHighlighter.defaults['html-script'] = false; //是否开启html的混合形式 默认为false 为关闭  
+    SyntaxHighlighter.defaults['toolbar']=true; //黄绿色版权问号的显示和隐藏 默认为true 为显示  
+    SyntaxHighlighter.all();  
+    </script>  
+</head>
+
+<body style="background: white; font-family: Helvetica">  
+ 
+<pre class="brush:java;" name="code">
+  public class Test{
+    public static void main(String [] args) {
+    
+      System.out.println("Java");
+    }
+  }
+</pre>
+
+<pre class="brush:sql;" name="code">
+ declare
+  iCnt number := 0;
+begin
+  --lower表示转换为小写进行查询
+  select count(*) into iCnt from user_tables  where  lower(table_name) = 't_user_info'; --进行当前表进行查询
+  if iCnt = 1 or  iCnt>0 then -- 如果查询不到这个表就创建这个表
+     iCnt := 0;    
+     -- 查询user_tab_columns是否存在t_user_info表有update_time字段
+     select count(*) into iCnt from user_tab_columns  where  lower(table_name) = 't_user_info'  and lower(column_name) = 'update_time'; 
+     --查询不到这个update_time字段，然后往下面执行			  
+     if iCnt = 0 then 
+        execute immediate 'alter table  t_user_info  add  update_time  date  '; 
+        execute immediate 'comment on column t_user_info.update_time  is ''更新时间'''; -- 更新时间描述    
+     end if; 
+  end if;
+end;
+/
+</pre>
+ 
+
+</html>
